@@ -15,9 +15,7 @@
   回调函数自动添加进request事件回调
  */
 const http = require('http');
-const server = http.createServer((req, res) => {
-  res.end();
-});
+const server = http.createServer();
 //If a client connection emits an 'error' event, it will be forwarded here
 server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
@@ -35,15 +33,17 @@ server.on('connection', socket => {
  * Emitted each time there is a request.
  * Note that there may be multiple requests per connection
  */
+server.on('request',(req, res) => res.end('hello wrold'));
 server.on('request',(request,response) => {
     let {url,method} = request;
     console.log(`request metadata is ${method} ${url} `);
     // close server
-    server.close(()=>process.stdout.write('server closed'));
+    // server.close(()=>process.stdout.write('server closed'));
 });
 
 
-server.listen(8000);
+
+server.listen(7000);
 
 
 //研究server的监听
