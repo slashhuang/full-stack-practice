@@ -4,7 +4,8 @@
   "description": "a full-stack-practice-for-node",
   "main": "index.js",
   "scripts": {
-    "request": "nodemon ./http/request"
+    "listener": "nodemon ./http/listener",
+    "incoming": "nodemon ./http/incoming"
   },
   "repository": {
     "type": "git",
