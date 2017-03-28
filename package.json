@@ -1,0 +1,26 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "a full-stack-practice-for-node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slashhuang/full-stack-practice.git"
+  },
+  "keywords": [
+    "node",
+    "posix"
+  ],
+  "author": "slashhuang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slashhuang/full-stack-practice/issues"
+  },
+  "homepage": "https://github.com/slashhuang/full-stack-practice#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
