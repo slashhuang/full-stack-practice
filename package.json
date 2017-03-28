@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "listener": "nodemon --inspect ./http/listener",
-    "incoming": "nodemon --inspect ./http/incoming"
+    "incoming": "nodemon --inspect ./http/incoming",
+    "response": "nodemon --inspect ./http/response"
   },
   "repository": {
     "type": "git",
