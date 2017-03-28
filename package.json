@@ -4,8 +4,8 @@
   "description": "a full-stack-practice-for-node",
   "main": "index.js",
   "scripts": {
-    "listener": "nodemon ./http/listener",
-    "incoming": "nodemon ./http/incoming"
+    "listener": "nodemon --inspect ./http/listener",
+    "incoming": "nodemon --inspect ./http/incoming"
   },
   "repository": {
     "type": "git",
