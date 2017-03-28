@@ -41,7 +41,17 @@ server.on('request',(request,response) => {
     // close server
     server.close(()=>process.stdout.write('server closed'));
 });
+
+
 server.listen(8000);
+
+
+//研究server的监听
+let listenerCounter = server.listenerCount('request');
+// prints 2
+console.log(listenerCounter);
+// returns http.createServer的回调
+console.log(server.listeners('request')[0].toString())
 
 
 
