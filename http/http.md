@@ -28,7 +28,7 @@
 > 这篇文章的受众是有Node开发经验的读者。
 
 ## request对象
-
+```bash
 > request对象实现了Readable Stream的接口
 
 |- IncomingMessage
@@ -80,10 +80,12 @@
 |- |- |- |- |- removeListener(type,listener)
 |- |- |- |- |- setMaxListener(n)
 
+```
 ## response
 
 > response对象实现了Writable Stream的接口，但它并未继承Writable Stream
 
+```bash
 |- ServerResponse
 |- |- socket (客户端和server的request socket)
 |- |- connection
@@ -134,7 +136,7 @@
 |- |- |- |- |- removeAllListeners(type)
 |- |- |- |- |- removeListener(type,listener)
 |- |- |- |- |- setMaxListener(n)
-
+```
 # 结语
 
 > 读者如果想实践上面列出的继承关系，可以戳这个[github response](https://github.com/slashhuang/full-stack-practice)
