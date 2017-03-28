@@ -28,8 +28,10 @@
 > 这篇文章的受众是有Node开发经验的读者。
 
 ## request对象
-```bash
+
 > request对象实现了Readable Stream的接口
+
+```bash
 
 |- IncomingMessage
 |- |- client
