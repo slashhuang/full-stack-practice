@@ -1,6 +1,8 @@
 /*
  * @Author slashhuang
- * 采用debug模块优化日志命名空间
+ * debug模块
+ *
+ * 优化日志命名空间
  * 17/3/28
  */
 

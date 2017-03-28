@@ -1,6 +1,8 @@
 /*
  * @Author slashhuang
- * 添加node-inspector
+ * node-inspector
+ * debug面板
+ * https://github.com/node-inspector/node-inspector
  * 17/3/28
  */
 

@@ -10,7 +10,8 @@
 
 
     "debug": "DEBUG=http,worker nodemon ./debug/debug.js",
-    "devtool": "nodemon ./node_modules/.bin/node-debug ./debug/node-inspector.js"
+    "devtool": "nodemon ./node_modules/.bin/node-debug ./debug/node-inspector.js",
+    "repl":"nodemon debug ./debug/debugger.js"
   },
   "repository": {
     "type": "git",
