@@ -6,7 +6,9 @@
   "scripts": {
     "listener": "nodemon --inspect ./http/listener",
     "incoming": "nodemon --inspect ./http/incoming",
-    "response": "nodemon --inspect ./http/response"
+    "response": "nodemon --inspect ./http/response",
+
+    "debug": "DEBUG=http,worker nodemon ./debug/debug.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   },
   "homepage": "https://github.com/slashhuang/full-stack-practice#readme",
   "devDependencies": {
+    "debug": "^2.6.3",
     "nodemon": "^1.11.0"
   }
 }
