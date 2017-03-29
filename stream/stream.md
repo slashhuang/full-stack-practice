@@ -29,6 +29,41 @@
 
 - internal buffer: stream暂存区
 
+## Buffer存储
+> stream在内部由Buffer存储，
+> highWaterMark => Buffer容量
+
+-  ReadableStream :
+
+>     stream.push(chunk)
+>     => chunk goto buffer
+>     stream.read()
+>     => chunk get consumed
+>
+> 当Buffer的大小>highWaterMark时，
+>    stream将会停止执行readable._read()
+>    直到Buffer被consume至highWaterMark底下
+>/
+
+- WritableStreams
+
+> 内部逻辑和Readable一致
+>     writable.write(chunk)
+>     => if < highWaterMark @return true
+>     => if >= highWaterMark @return false
+>
+
+- 调节API stream.pipe
+
+> pipe方法的主要作用在于调节输入输出双方。
+> 当输入和输出的速度不一致时，由pipe来调节双方。
+>
+
+- Duplex and  Transform
+
+> 核心逻辑在于read write两端各自设置Buffer。
+> 两端对buffer的操作彼此独立
+
 
 ## Stream api结构
 
