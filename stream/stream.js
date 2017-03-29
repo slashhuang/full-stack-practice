@@ -109,6 +109,7 @@ http.createServer((req,res)=>{
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
+        // 998509-resuming--
         message &&  writer.write(message, encoding)&&console.log(`${i}-${message}`);
         ok = writer.write(data, encoding);
       }
