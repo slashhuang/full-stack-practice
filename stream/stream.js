@@ -2,6 +2,8 @@
  * @Author slashhuang
  * 17/3/29
  * Stream in Node.js
+ * Almost all Node.js applications,
+ * no matter how simple, use streams in some manner
  */
 
 /* 核心理念: 用来处理流式数据的接口
@@ -55,6 +57,11 @@ const stream = require('stream');
   * 两端对buffer的操作彼此独立
   */
 
+//----------------代码实践区域--------------------
+
+/*
+ * API for Stream Consumers
+ */
 
 
 
