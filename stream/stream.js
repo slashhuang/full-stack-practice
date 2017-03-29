@@ -45,6 +45,16 @@ const stream = require('stream');
   *     => if >= highWaterMark @return false
   */
 
+ /* 调节API stream.pipe
+  * pipe方法的主要作用在于调节输入输出双方。
+  * 当输入和输出的速度不一致时，由pipe来调节双方。
+  */
+
+ /* Duplex and  Transform
+  * 核心逻辑在于read write两端各自设置Buffer。
+  * 两端对buffer的操作彼此独立
+  */
+
 
 
 
