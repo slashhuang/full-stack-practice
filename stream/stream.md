@@ -59,101 +59,61 @@
 > 当输入和输出的速度不一致时，由pipe来调节双方。
 >
 
-- Duplex and  Transform
+- Duplex and Transform
 
 > 核心逻辑在于read write两端各自设置Buffer。
 > 两端对buffer的操作彼此独立
 
 
 ## Stream api结构
+```bash
 
 |- Writable Streams
-|
 |- |- EVENTS
-|
 |- |- |- close
-|
-|- |- drain
-|
-|- |- error
-|
-|- |- finish
-|
-|- |- pipe
-|
-|- |- unpipe
-|
-|- |
-|
-|- Methods
-|
-|- |- end([chunk][, encoding][, callback])
-|
-|- |- cork
-|
-|- |- setDefaultEncoding(encoding)
-|
-|- |- uncork()
-|
-|- |- write(chunk[, encoding][, callback])
+|- |- |- drain
+|- |- |- error
+|- |- |- finish
+|- |- |- pipe
+|- |- |- unpipe
+|- |- |
+|- |- Methods
+|- |- |- end([chunk][, encoding][, callback])
+|- |- |- cork
+|- |- |- setDefaultEncoding(encoding)
+|- |- |- uncork()
+|- |- |- write(chunk[, encoding][, callback])
 
 
+|- Readable Streams
+|- |- MODES
+|- |- |- flow mode
+|- |- |- pause mode
+|- |- |
+|- |- State
+|- |- |- _readableState.flowing = null
+|- |- |- _readableState.flowing = false
+|- |- |- _readableState.flowing = true
+|- |- |
+|- |- EVENTS
+|- |- |- close
+|- |- |- data
+|- |- |- end
+|- |- |- error
+|- |- |- readable
+|- |- |
+|- |- Methods
+|- |- |- isPaused()
+|- |- |- pause()
+|- |- |- pipe(destination[, options])
+|- |- |- read([size])
+|- |- |- resume()
+|- |- |- setEncoding(encoding)
+|- |- |- pipe(destination[, options])
+|- |- |- unpipe([destination])
+|- |- |- unshift(chunk)
 
-Readable Streams
-|
-|- MODES
-|
-|- |- flow mode
-|
-|- |- pause mode
-|
-|- |
-|
-|- State
-|
-|- |- _readableState.flowing = null
-|
-|- |- _readableState.flowing = false
-|
-|- |- _readableState.flowing = true
-|
-|- |
-|
-|- EVENTS
-|
-|- |- close
-|
-|- |- data
-|
-|- |- end
-|
-|- |- error
-|
-|- |- readable
-|
-|- |
-|
-|- Methods
-|
-|- |- isPaused()
-|
-|- |- pause()
-|
-|- |- pipe(destination[, options])
-|
-|- |- read([size])
-|
-|- |- resume()
-|
-|- |- setEncoding(encoding)
-|
-|- |- pipe(destination[, options])
-|
-|- |- unpipe([destination])
-|
-|- |- unshift(chunk)
-
-
+```
 
 
 
