@@ -99,6 +99,13 @@ const stream = require('stream');
  *   > returns a reference to the destination stream
  *
  */
+// 结果
+//readable
+// chunking
+// pull data <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// readable
+// pull data null
+// end
 const http = require('http');
 http.createServer((req,res)=>{
     let body = '';
@@ -106,11 +113,15 @@ http.createServer((req,res)=>{
     req.pause();
     // 5秒后 switching the stream into flowing mode
     setTimeout(()=>req.resume(),5000)
+    // consume data
     req.on('data',(chunk)=>{
-       console.log('chunking')
+       console.log('chunking',chunk)
         body+=chunk
     }).on('readable',()=>{
         console.log('readable')
+        // consume data
+        //pulls some data out of the internal buffer and returns it.
+        console.log('pull data',req.read())
     }).on('end',()=>{
        console.log('end')
         res.end(body)
@@ -147,26 +158,27 @@ http.createServer((req,res)=>{
  *   emitted when the stream.pipe() method is called
  *
  */
-//  function writeOneMillionTimes(writer, data, encoding, callback) {
-//   let i = 100000;
-//   writer.once('drain', ()=>write('resuming--'));
-//   write();
-//   function write(message) {
-//     var ok = true;
-//     do {
-//       i--;
-//       if (i === 0) {
-//         writer.write(data, encoding, callback);
-//       } else {
-//         // 998509-resuming--
-//         message &&  writer.write(message, encoding)&&console.log(`${i}-${message}`);
-//         ok = writer.write(data, encoding);
-//       }
-//     } while (i > 0 && ok);
-//   }
-// };
-// let fs = require('fs').createWriteStream('./tmp');
-// writeOneMillionTimes(fs,'hello world','utf8',()=>console.log('done'))
+ function writeOneMillionTimes(writer, data, encoding, callback) {
+  let i = 100000;
+  writer.once('drain', ()=>write('resuming--'));
+  write();
+  function write(message) {
+    var ok = true;
+    do {
+      i--;
+      if (i === 0) {
+        writer.write(data, encoding, callback);
+      } else {
+        // 998509-resuming--
+        message &&  writer.write(message, encoding)&&console.log(`${i}-${message}`);
+        ok = writer.write(data, encoding);
+      }
+    } while (i > 0 && ok);
+  }
+};
+let fs = require('fs').createWriteStream('./tmp');
+//
+//writeOneMillionTimes(fs,'hello world','utf8',()=>console.log('done'))
 
 
 
