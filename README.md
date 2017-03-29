@@ -10,7 +10,7 @@
 
 # stream对象相关
 
-- [stream数据结构](./stream/stream.md)
+- [stream知识体系和数据结构](./stream/stream.md)
 
 
 # 四种debug主流debug模式
