@@ -61,7 +61,68 @@ const stream = require('stream');
 
 /*
  * API for Stream Consumers
+ * 测试例子:curl localhost:7000 -d "hello world"
  */
+const http = require('http');
+http.createServer((req,res)=>{
+    let body = ''
+    req.on('data',(chunk)=>{
+        body+=chunk
+    }).on('end',()=>{
+        res.end(body)
+    })
+}).listen(7000)
+/*
+ * Writable streams 暴露了write/end来写入数据
+ * Readable streams 采用EventEmitter来通知数据的读取状态
+ *
+ * stream状态读取
+ * 无论是Readable还是Writable都采用EventEmitter来沟通暴露数据状态
+ *
+ * 大多数应用的stream读取状态都不需要到require('stream')这一层。
+ */
+/*
+ * writable Stream举例
+ * HTTP responses, on the server
+ * fs write streams
+ * zlib streams
+ * crypto streams
+ * TCP sockets
+ * child process stdin==> stdout && stderr
+ */
+ /*
+ * writable Stream事件
+ * - close
+ * - drain
+ *   stream.write(chunk) returns false,
+ *   the 'drain' event will be emitted
+ *   when it is appropriate to resume writing data to the stream.
+ *
+ */
+ function writeOneMillionTimes(writer, data, encoding, callback) {
+  let i = 1000000;
+  write();
+  function write(message) {
+    var ok = true;
+    do {
+      i--;
+      if (i === 0) {
+        writer.write(data, encoding, callback);
+      } else {
+        message &&  writer.write(message, encoding)&&console.log(`${i}-${message}`);
+        ok = writer.write(data, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', ()=>write('resuming--'));
+    }
+  }
+};
+let fs = require('fs').createWriteStream('./tmp');
+writeOneMillionTimes(fs,'hello world','utf8',()=>console.log('done'))
+
+
+
 
 
 
