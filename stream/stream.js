@@ -9,6 +9,7 @@
 /* 核心理念: 用来处理流式数据的接口
  * A stream is an abstract interface
  * for working with streaming data in Node.js
+ * Not all  streams will emit the 'close' event
  */
 
 /* 继承关系:
@@ -97,10 +98,13 @@ http.createServer((req,res)=>{
  *   stream.write(chunk) returns false,
  *   the 'drain' event will be emitted
  *   when it is appropriate to resume writing data to the stream.
+ * - pipe
+ *   emitted when the stream.pipe() method is called
  *
  */
  function writeOneMillionTimes(writer, data, encoding, callback) {
-  let i = 1000000;
+  let i = 100000;
+  writer.once('drain', ()=>write('resuming--'));
   write();
   function write(message) {
     var ok = true;
@@ -114,18 +118,33 @@ http.createServer((req,res)=>{
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
-    if (i > 0) {
-      writer.once('drain', ()=>write('resuming--'));
-    }
   }
 };
 let fs = require('fs').createWriteStream('./tmp');
 writeOneMillionTimes(fs,'hello world','utf8',()=>console.log('done'))
 
+/*
+ * Readable Streams对象
+ * Readable streams are an abstraction for a source from which data is consumed.
 
-
-
-
+ * HTTP requests, on the server
+ * fs read streams
+ * zlib streams
+ * crypto streams
+ * TCP sockets
+ * child process stdout and stderr
+ * process.stdin
+ */
+ /*
+ * Readable Streams事件
+ * - close
+ * - data
+ * - end
+ *
+ * -readable
+ * 'readable' event indicates that the stream has new information:
+ *  either new data is available or the end of the stream has been reached
+ */
 
 
 
