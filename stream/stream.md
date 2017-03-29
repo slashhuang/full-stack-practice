@@ -1,8 +1,5 @@
 ## stream数据结构分解
 
-
-
-
 |- Writable Streams
 |- |- EVENTS
 |- |- |- close
