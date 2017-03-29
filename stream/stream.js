@@ -17,14 +17,6 @@
  * All streams are instances of EventEmitter.
  */
 const stream = require('stream');
-/* Stream四大基础类型
- * Readble :例子fs.createReadStream()
- * Writable:例子fs.createWriteStream()
- * Duplex =>both readablea and writable :例子 net.Socket
- * Transform:=>Duplex stream 能够不断在读写过程中修改。
- *              :例子zlib.createDeflate
- */
-
 
  /* Buffer存储
   * stream在内部由Buffer存储，
