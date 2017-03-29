@@ -54,7 +54,7 @@
 |- |- |- flow mode
 |- |- |- pause mode
 |- |- |
-|- |- state
+|- |- State
 |- |- |- _readableState.flowing = null
 |- |- |- _readableState.flowing = false
 |- |- |- _readableState.flowing = true
