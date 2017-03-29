@@ -64,14 +64,59 @@ const stream = require('stream');
  * API for Stream Consumers
  * 测试例子:curl localhost:7000 -d "hello world"
  */
+/*
+ * Readable Streams对象
+ * 两种模式 ：flow mode + paused mode
+ * 模式切换
+ * 'data'事件
+ *  stream.resume()方法
+ *  stream.pipe()方法
+ *
+ * 示例
+ * HTTP requests, on the server
+ * fs read streams
+ * zlib streams
+ * crypto streams
+ * TCP sockets
+ * child process stdout and stderr
+ * process.stdin
+ **
+ * 事件
+ * - close
+ * - data
+ * - end
+ *
+ * -readable
+ * 'readable' event indicates that the stream has new information:
+ *  either new data is available or the end of the stream has been reached
+ **
+ * 方法
+ * - pause
+ * - resume
+ * - isPaused
+ * - pipe
+ *   > 自动转换stream模式为flow
+ *   > returns a reference to the destination stream
+ *
+ */
 const http = require('http');
 http.createServer((req,res)=>{
-    let body = ''
+    let body = '';
+    // Any data that becomes available will remain in the internal buffer
+    req.pause();
+    // 5秒后 switching the stream into flowing mode
+    setTimeout(()=>req.resume(),5000)
     req.on('data',(chunk)=>{
+       console.log('chunking')
         body+=chunk
+    }).on('readable',()=>{
+        console.log('readable')
     }).on('end',()=>{
+       console.log('end')
         res.end(body)
-    })
+    }).on('close',()=>{
+         console.log('end')
+    });
 }).listen(7000)
 /*
  * Writable streams 暴露了write/end来写入数据
@@ -102,49 +147,27 @@ http.createServer((req,res)=>{
  *   emitted when the stream.pipe() method is called
  *
  */
- function writeOneMillionTimes(writer, data, encoding, callback) {
-  let i = 100000;
-  writer.once('drain', ()=>write('resuming--'));
-  write();
-  function write(message) {
-    var ok = true;
-    do {
-      i--;
-      if (i === 0) {
-        writer.write(data, encoding, callback);
-      } else {
-        // 998509-resuming--
-        message &&  writer.write(message, encoding)&&console.log(`${i}-${message}`);
-        ok = writer.write(data, encoding);
-      }
-    } while (i > 0 && ok);
-  }
-};
-let fs = require('fs').createWriteStream('./tmp');
-writeOneMillionTimes(fs,'hello world','utf8',()=>console.log('done'))
+//  function writeOneMillionTimes(writer, data, encoding, callback) {
+//   let i = 100000;
+//   writer.once('drain', ()=>write('resuming--'));
+//   write();
+//   function write(message) {
+//     var ok = true;
+//     do {
+//       i--;
+//       if (i === 0) {
+//         writer.write(data, encoding, callback);
+//       } else {
+//         // 998509-resuming--
+//         message &&  writer.write(message, encoding)&&console.log(`${i}-${message}`);
+//         ok = writer.write(data, encoding);
+//       }
+//     } while (i > 0 && ok);
+//   }
+// };
+// let fs = require('fs').createWriteStream('./tmp');
+// writeOneMillionTimes(fs,'hello world','utf8',()=>console.log('done'))
 
-/*
- * Readable Streams对象
- * Readable streams are an abstraction for a source from which data is consumed.
-
- * HTTP requests, on the server
- * fs read streams
- * zlib streams
- * crypto streams
- * TCP sockets
- * child process stdout and stderr
- * process.stdin
- */
- /*
- * Readable Streams事件
- * - close
- * - data
- * - end
- *
- * -readable
- * 'readable' event indicates that the stream has new information:
- *  either new data is available or the end of the stream has been reached
- */
 
 
 
