@@ -33,3 +33,43 @@ const bufArr = Buffer.from([1,2,3]);
 for(const b of bufArr){
     console.log(b)
 }
+
+/*-----------  Method ----------*/
+const buf_1 = Buffer.from('1234');
+const buf_2 = Buffer.from('0123');
+const arr = [buf_1, buf_2];
+// 1
+console.log(Buffer.compare(buf_1,buf_2))
+// Prints: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
+console.log(arr.sort(Buffer.compare));
+
+const totalLength = buf_2.length + buf_1.length;
+const buf_cat = Buffer.concat([buf_2,buf_1], totalLength);
+//<Buffer 30 31 32 33 31 32 33 34>
+console.log(buf_cat)
+
+
+const buf_from = Buffer.from(buf_1);
+buf_from[0] = 0x61;
+// Prints: 1234
+console.log(buf_1.toString());
+// Prints: a1234
+console.log(buf_from.toString());
+//[0,97] [1,50]等
+for(const pair of buf_from.entries()){
+    console.log(pair)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

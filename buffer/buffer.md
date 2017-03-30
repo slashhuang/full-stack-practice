@@ -13,6 +13,8 @@ Buffer实例和整数数组类似，但是大小固定，并且属于V8的堆外
 
 Buffer是Node.js的全局类，因此不需要require('buffer')来引入。
 
+> 数据存储采用16进制标示
+
 ## Buffer方法演进
 
  > Node版本6之前创建Buffer需要通过Buffer构造函数
@@ -60,6 +62,70 @@ Buffer是Node.js的全局类，因此不需要require('buffer')来引入。
 ## Buffers and ES6 iteration
 
 > Buffer instances can be iterated over using the ECMAScript 2015 (ES6) for..of syntax.
+
+
+## Buffer方法
+
+- Buffer.byteLength(string[, encoding])
+
+> Returns: {integer} The number of bytes contained within string
+
+- Buffer.compare(buf1, buf2)
+
+> Returns: {integer}
+
+- Buffer.concat(list[, totalLength])
+
+> 尽量手写totalLength，避免程序为了计算totalLength，再进行loop
+>  truncated to totalLength
+> Returns: {Buffer}
+
+- Buffer.isBuffer(obj)
+
+> obj {Object}
+> Returns: {boolean}
+
+- Buffer.isEncoding(encoding)
+
+> encoding {string} A character encoding name to check
+> Returns: {boolean}
+
+
+- buf[index]
+
+- buf.buffer
+
+>  references the underlying ArrayBuffer object based on which this Buffer object is created
+
+- buf.entries()
+
+> Returns: {Iterator}
+
+- buf.indexOf(value[, byteOffset][, encoding])
+
+- buf.keys()
+
+- buf.length
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
