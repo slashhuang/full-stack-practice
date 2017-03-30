@@ -13,7 +13,8 @@
     "inspector": "nodemon ./node_modules/.bin/node-debug ./debug/node-inspector.js",
     "repl":"nodemon debug ./debug/repl.js",
 
-    "stream":"nodemon ./stream/stream.js"
+    "stream":"nodemon ./stream/stream.js",
+    "buffer":"nodemon ./buffer/buffer.js"
 
   },
   "repository": {
