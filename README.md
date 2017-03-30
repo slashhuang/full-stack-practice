@@ -16,6 +16,10 @@
 
 - [Buffer基本知识](./buffer/buffer.md)
 
+# 创建守护进程
+
+- [daemon](./daemon/daemon.js)
+
 
 # 四种debug主流debug模式
 
