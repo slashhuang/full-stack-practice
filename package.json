@@ -17,6 +17,7 @@
     "buffer":"nodemon ./buffer/buffer.js",
     "v8":"nodemon ./v8/v8.js",
     "process":"nodemon ./process/process.js",
+    "daemon":"node ./daemon/daemon"
 
     "test":"nodemon ./tmp"
 
