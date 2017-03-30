@@ -14,7 +14,10 @@
     "repl":"nodemon debug ./debug/repl.js",
 
     "stream":"nodemon ./stream/stream.js",
-    "buffer":"nodemon ./buffer/buffer.js"
+    "buffer":"nodemon ./buffer/buffer.js",
+    "v8":"nodemon ./v8/v8.js",
+
+    "test":"nodemon ./test"
 
   },
   "repository": {
