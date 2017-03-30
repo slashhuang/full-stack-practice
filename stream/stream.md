@@ -40,17 +40,23 @@
 >     stream.read()
 >     => chunk get consumed
 >
+
 > 当Buffer的大小>highWaterMark时，
 >    stream将会停止执行readable._read()
+
 >    直到Buffer被consume至highWaterMark底下
+
 >/
 
 - WritableStreams
 
 > 内部逻辑和Readable一致
 >     writable.write(chunk)
+
 >     => if < highWaterMark @return true
+
 >     => if >= highWaterMark @return false
+
 >
 
 - 调节API stream.pipe

@@ -16,8 +16,9 @@
     "stream":"nodemon ./stream/stream.js",
     "buffer":"nodemon ./buffer/buffer.js",
     "v8":"nodemon ./v8/v8.js",
+    "process":"nodemon ./process/process.js",
 
-    "test":"nodemon ./test"
+    "test":"nodemon ./tmp"
 
   },
   "repository": {
