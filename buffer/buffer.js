@@ -26,3 +26,10 @@ console.log(buf5.toString('utf8'))
 // encoding互换
 const bufEnc1 = Buffer.from('hello world', 'ascii');
 console.log(bufEnc1.toString('ascii'))
+
+/*-----------  Iteration ----------*/
+const bufArr = Buffer.from([1,2,3]);
+// print 1,2,3
+for(const b of bufArr){
+    console.log(b)
+}
