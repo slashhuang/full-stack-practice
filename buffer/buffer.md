@@ -51,6 +51,7 @@ Buffer是Node.js的全局类，因此不需要require('buffer')来引入。
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] =>
 
   returns a "filled" `Buffer` instance of the specified size.
+
   This method can be significantly slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but ensures
   that newly created `Buffer` instances never contain old and potentially
   sensitive data.
