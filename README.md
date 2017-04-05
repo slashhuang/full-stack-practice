@@ -20,6 +20,14 @@
 
 - [daemon](./daemon/daemon.js)
 
+# 模板引擎
+
+- [view-engine](./view-engine/ejs.js)
+
+```bash
+    npm run v-engine
+```
+
 
 # 四种debug主流debug模式
 

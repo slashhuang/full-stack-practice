@@ -4,7 +4,7 @@
 
 EJS的模板引擎实现分为标签语法解析和函数动态性注入两块。
 
-### XML 语法
+### 代码示例
 
 ```js
 
@@ -18,23 +18,43 @@ EJS的模板引擎实现分为标签语法解析和函数动态性注入两块�
 
 EJS采用XML开闭标签和delimeter来标示需要动态渲染的数据。
 
-基本的语法架构:
+### 基本的语法架构:
 
 1、Delimiters 分割符
+
 2、开始标记
+
+```js
     <%=: Escaped output
     <%-: Unescaped output
     <%#: Comments
     <%: Scriptlet
     <%_: Scriptlet, removes all preceeding whitespace
+```
+
 3、闭合标记
+
+```js
     %>: Regular ending tag
     -%>: Removes trailing newline
     _%>: Removes all trailing whitespace
+
+```
+
+
 4、语义化标记
-    转义 <%% ==> <%
+
+```js
+    转义 <%% 会变为 <%
+
+```
+
 5、文件标记
+
+```js
     <%- include(filename, [locals]) %>
+
+ ```
 
 
 ### 采用new Function生成动态代码块
