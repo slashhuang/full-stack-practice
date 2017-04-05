@@ -4,23 +4,20 @@
   "description": "a full-stack-practice-for-node",
   "main": "index.js",
   "scripts": {
+    "//": "Node核心模块及操作系统",
     "listener": "nodemon --inspect ./http/listener",
     "incoming": "nodemon --inspect ./http/incoming",
     "response": "nodemon --inspect ./http/response",
-
-
+    "v-engine": "nodemon ./view-engine/index.js",
     "debug": "DEBUG=http,worker nodemon ./debug/debug.js",
     "inspector": "nodemon ./node_modules/.bin/node-debug ./debug/node-inspector.js",
-    "repl":"nodemon debug ./debug/repl.js",
-
-    "stream":"nodemon ./stream/stream.js",
-    "buffer":"nodemon ./buffer/buffer.js",
-    "v8":"nodemon ./v8/v8.js",
-    "process":"nodemon ./process/process.js",
-    "daemon":"node ./daemon/daemon"
-
-    "test":"nodemon ./tmp"
-
+    "repl": "nodemon debug ./debug/repl.js",
+    "stream": "nodemon ./stream/stream.js",
+    "buffer": "nodemon ./buffer/buffer.js",
+    "v8": "nodemon ./v8/v8.js",
+    "process": "nodemon ./process/process.js",
+    "daemon": "node ./daemon/daemon",
+    "test": "nodemon ./tmp"
   },
   "repository": {
     "type": "git",
@@ -40,5 +37,8 @@
     "debug": "^2.6.3",
     "node-inspector": "^1.0.0",
     "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6"
   }
 }
