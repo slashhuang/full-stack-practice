@@ -1,3 +1,6 @@
+/* EJS模板引擎测试
+ */
+
     const path =require('path');
     const ejs = require('ejs');
     const input = `<%- $.hello %>
@@ -47,3 +50,10 @@
         ]
     });
     console.log(output);
+
+
+
+
+
+
+

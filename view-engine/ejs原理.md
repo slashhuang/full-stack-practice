@@ -18,7 +18,8 @@ EJS的模板引擎实现分为标签语法解析和函数动态性注入两块�
 
 EJS采用XML开闭标签和delimeter来标示需要动态渲染的数据。
 
-基本的语法:
+基本的语法架构:
+
 1、Delimiters 分割符
 2、开始标记
     <%=: Escaped output
@@ -36,5 +37,26 @@ EJS采用XML开闭标签和delimeter来标示需要动态渲染的数据。
     <%- include(filename, [locals]) %>
 
 
-###
+### 采用new Function生成动态代码块
+
+[new Function参考资料](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+
+```js
+    // returns 6
+    new Function('a','b','c',"return a+ b +c")(1,2,3)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
